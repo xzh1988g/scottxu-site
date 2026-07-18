@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from './Hero.astro';
+import Products from './Products.astro';
+import Experience from './Experience.astro';
+import Skills from './Skills.astro';
+import Footer from './Footer.astro';
+import { site, type Lang } from '../data/site';
+import { useTranslations } from '../i18n/ui';
+import { personSchema } from '../data/jsonld';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const title = `${site.name} — ${site.jobTitle}`;
+const description = t('site.description');
+---
+
+<BaseLayout title={title} description={description} lang={lang} path="/" jsonld={personSchema()}>
+  <div class="container">
+    <Hero lang={lang} />
+    <Products lang={lang} />
+    <Experience lang={lang} />
+    <Skills lang={lang} />
+  </div>
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>

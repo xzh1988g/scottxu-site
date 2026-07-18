@@ -1,0 +1,77 @@
+---
+import { type Lang } from '../data/site';
+import { experience } from '../data/experience';
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="section" id="experience" aria-labelledby="experience-title">
+  <h2 id="experience-title">{t('experience.title')}</h2>
+
+  <ol class="timeline">
+    {
+      experience.map((job) => (
+        <li class="job">
+          <div class="job-head">
+            <h3 class="job-role">{job.role[lang]}</h3>
+            <p class="job-meta">
+              <span class="job-company">{job.company}</span>
+              <span class="job-dot" aria-hidden="true">·</span>
+              <span>{job.location}</span>
+              <span class="job-dot" aria-hidden="true">·</span>
+              <span class="job-period">{job.period}</span>
+            </p>
+          </div>
+          <ul class="job-bullets">
+            {job.bullets.map((b) => (
+              <li>{b[lang]}</li>
+            ))}
+          </ul>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<style>
+  .timeline {
+    display: grid;
+    gap: 2rem;
+  }
+  .job-role {
+    margin-bottom: 0.25rem;
+  }
+  .job-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+    color: var(--ink-faint);
+    margin: 0 0 0.75rem;
+  }
+  .job-company {
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+  .job-dot {
+    color: var(--line);
+  }
+  .job-bullets {
+    display: grid;
+    gap: 0.55rem;
+    padding-left: 1.1rem;
+    list-style: disc;
+  }
+  .job-bullets li {
+    color: var(--ink-soft);
+    padding-left: 0.15rem;
+  }
+  .job-bullets li::marker {
+    color: var(--accent);
+  }
+</style>

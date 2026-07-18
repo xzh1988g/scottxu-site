@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from './Footer.astro';
+import { site, type Lang } from '../data/site';
+import type { Project } from '../data/projects';
+import { useTranslations } from '../i18n/ui';
+import { creativeWorkSchema } from '../data/jsonld';
+
+interface Props {
+  project: Project;
+  lang: Lang;
+}
+const { project, lang } = Astro.props;
+const t = useTranslations(lang);
+
+const title = `${project.name.en} — ${site.name}`;
+const description = project.oneLiner.en;
+const path = `/projects/${project.slug}`;
+
+const sections = [
+  { label: t('project.problem'), body: project.problem[lang] },
+  { label: t('project.approach'), body: project.approach[lang] },
+  { label: t('project.role'), body: project.role[lang] },
+  { label: t('project.result'), body: project.result[lang] },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  lang={lang}
+  path={path}
+  jsonld={creativeWorkSchema(project, lang)}
+>
+  <article class="container project">
+    <a class="back" href={lang === 'en' ? '/' : '/zh'}>{t('project.back')}</a>
+
+    <header class="project-header">
+      <span class="pill pill-live">
+        <span class="dot"></span>
+        {project.status[lang]}
+      </span>
+      <h1>{project.name[lang]}</h1>
+      <p class="lede">{project.oneLiner[lang]}</p>
+      {
+        project.liveUrl && (
+          <a class="btn btn-primary" href={project.liveUrl} rel="noopener" target="_blank">
+            {t('project.visit')} {project.liveLabel} ↗
+          </a>
+        )
+      }
+    </header>
+
+    <div class="case">
+      {
+        sections.map((s) => (
+          <section class="case-block">
+            <h2>{s.label}</h2>
+            <p>{s.body}</p>
+          </section>
+        ))
+      }
+
+      <section class="case-block">
+        <h2>{t('project.stack')}</h2>
+        <ul class="stack-row">
+          {project.stack.map((s) => <li class="tag">{s}</li>)}
+        </ul>
+      </section>
+    </div>
+  </article>
+
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>
+
+<style>
+  .project {
+    padding-block: clamp(1.5rem, 5vw, 2.5rem);
+  }
+  .back {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    text-decoration: none;
+  }
+  .project-header {
+    margin-bottom: 2.5rem;
+  }
+  .project-header h1 {
+    margin-top: 0.75rem;
+  }
+  .lede {
+    font-family: var(--font-serif);
+    font-size: clamp(1.15rem, 4vw, 1.4rem);
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+  .case {
+    display: grid;
+    gap: 2rem;
+  }
+  .case-block h2 {
+    font-size: 0.85rem;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  .case-block p {
+    margin: 0;
+    font-size: 1.05rem;
+  }
+  .stack-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+</style>

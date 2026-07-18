@@ -1,0 +1,7 @@
+# scottxu.dev — all crawlers welcome, including AI/LLM crawlers.
+User-agent: *
+Allow: /
+
+# Machine-readable resources
+Sitemap: https://scottxu.dev/sitemap.xml
+# LLM self-summary: https://scottxu.dev/llms.txt

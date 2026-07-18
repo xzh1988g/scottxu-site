@@ -1,0 +1,75 @@
+---
+import { site, type Lang } from '../data/site';
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<footer class="section site-footer" aria-labelledby="footer-title">
+  <div class="container">
+    <h2 id="footer-title" class="visually-hidden">Contact</h2>
+    <ul class="contact-list">
+      <li>
+        <span class="contact-label">{t('footer.emailLabel')}</span>
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+      </li>
+      <li>
+        <span class="contact-label">{t('footer.linkedinLabel')}</span>
+        <a href={site.linkedin} rel="noopener" target="_blank">
+          {site.linkedin.replace('https://', '')} ↗
+        </a>
+      </li>
+      <li>
+        <span class="contact-label">{t('footer.resumeLabel')}</span>
+        <a href={site.resumePdf}>{t('footer.resumeLabel')}</a>
+      </li>
+    </ul>
+    <p class="colophon">
+      © {new Date().getFullYear()} {site.name}. {t('footer.builtWith')}
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding: 0;
+  }
+  .site-footer .container {
+    padding-block: clamp(2.5rem, 7vw, 3.5rem);
+  }
+  .contact-list {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .contact-list li {
+    display: grid;
+    gap: 0.15rem;
+  }
+  .contact-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .contact-list a {
+    font-size: 1.05rem;
+    word-break: break-word;
+  }
+  .colophon {
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+    margin: 0;
+  }
+
+  @media (min-width: 40rem) {
+    .contact-list {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

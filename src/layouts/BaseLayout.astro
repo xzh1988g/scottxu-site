@@ -1,0 +1,104 @@
+---
+import '../styles/global.css';
+import { site, type Lang } from '../data/site';
+import { hreflangAlternates, localizedUrl, localizedPath } from '../i18n/routing';
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+  title: string;
+  description: string;
+  lang: Lang;
+  /** Canonical, language-neutral path, e.g. '/' or '/projects/turtle-soup'. */
+  path: string;
+  /** Optional JSON-LD object(s) to embed in <head>. */
+  jsonld?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const { title, description, lang, path, jsonld } = Astro.props;
+const t = useTranslations(lang);
+
+const canonical = localizedUrl(path, lang);
+const alternates = hreflangAlternates(path);
+const otherLang: Lang = lang === 'en' ? 'zh' : 'en';
+const otherLangPath = localizedPath(path, otherLang);
+const htmlLang = lang === 'zh' ? 'zh-Hans' : 'en';
+
+const schemas = jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : [];
+---
+
+<!doctype html>
+<html lang={htmlLang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
+
+    <!-- Open Graph / social -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={lang === 'zh' ? 'zh_CN' : 'en_US'} />
+    <meta name="twitter:card" content="summary" />
+
+    <meta name="author" content={site.name} />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <!-- Structured data — machine-readable layer -->
+    {
+      schemas.map((s) => (
+        <script type="application/ld+json" set:html={JSON.stringify(s)} />
+      ))
+    }
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="container site-top">
+      <a class="wordmark" href={lang === 'en' ? '/' : '/zh'}>{site.name}</a>
+      <a class="lang-switch" href={otherLangPath} lang={otherLang === 'zh' ? 'zh-Hans' : 'en'}
+        aria-label={t('lang.switchAria')}>{t('lang.switch')}</a>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <slot name="footer" />
+
+    <style>
+      .site-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-block: 1.1rem;
+      }
+      .wordmark {
+        font-family: var(--font-serif);
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: var(--ink);
+        text-decoration: none;
+        letter-spacing: -0.01em;
+      }
+      .lang-switch {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--ink-soft);
+        text-decoration: none;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.3rem 0.85rem;
+      }
+      .lang-switch:hover {
+        border-color: var(--ink-faint);
+        color: var(--ink);
+      }
+    </style>
+  </body>
+</html>

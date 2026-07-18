@@ -1,0 +1,84 @@
+---
+import { type Lang } from '../data/site';
+import { skills, beyondWork } from '../data/skills';
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const columnTitle = {
+  banking: t('skills.banking'),
+  technical: t('skills.technical'),
+  product: t('skills.product'),
+} as const;
+---
+
+<section class="section" id="skills" aria-labelledby="skills-title">
+  <h2 id="skills-title">{t('skills.title')}</h2>
+
+  <div class="skills-grid">
+    {
+      skills.map((col) => (
+        <div class="skill-col">
+          <h3 class="skill-col-title">{columnTitle[col.key]}</h3>
+          <ul class="skill-list">
+            {col.items.map((s) => (
+              <li>{s}</li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+
+  <p class="beyond">
+    <span class="eyebrow beyond-label">{t('beyond.title')}</span>
+    {beyondWork[lang]}
+  </p>
+</section>
+
+<style>
+  .skills-grid {
+    display: grid;
+    gap: 1.75rem;
+  }
+  .skill-col-title {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .skill-list {
+    display: grid;
+    gap: 0.5rem;
+  }
+  .skill-list li {
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+  }
+  .beyond {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+    color: var(--ink-soft);
+  }
+  .beyond-label {
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+
+  @media (min-width: 40rem) {
+    .skills-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+  }
+</style>

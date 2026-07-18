@@ -1,0 +1,86 @@
+---
+import { type Lang } from '../data/site';
+import { projects } from '../data/projects';
+import { useTranslations } from '../i18n/ui';
+import { localizedPath } from '../i18n/routing';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="section" id="products" aria-labelledby="products-title">
+  <p class="eyebrow">{t('products.subtitle')}</p>
+  <h2 id="products-title">{t('products.title')}</h2>
+
+  <div class="product-grid">
+    {
+      projects.map((p) => (
+        <article class="card product-card">
+          <div class="product-head">
+            <h3>{p.name[lang]}</h3>
+            <span class="pill pill-live">
+              <span class="dot" />
+              {p.status[lang]}
+            </span>
+          </div>
+          <p class="product-oneliner">{p.oneLiner[lang]}</p>
+
+          <ul class="stack-row">
+            {p.stack.map((s) => (
+              <li class="tag">{s}</li>
+            ))}
+          </ul>
+
+          <div class="product-links">
+            <a class="btn btn-ghost" href={localizedPath(`/projects/${p.slug}`, lang)}>
+              {t('products.viewCase')}
+            </a>
+            {p.liveUrl && (
+              <a class="btn btn-primary" href={p.liveUrl} rel="noopener" target="_blank">
+                {t('products.liveLink')} {p.liveLabel} ↗
+              </a>
+            )}
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .product-grid {
+    display: grid;
+    gap: 1.25rem;
+  }
+  .product-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .product-oneliner {
+    margin: 0 0 1rem;
+  }
+  .stack-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0 0 1.25rem;
+  }
+  .product-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  @media (min-width: 40rem) {
+    .product-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

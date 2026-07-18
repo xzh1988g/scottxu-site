@@ -1,0 +1,11 @@
+# Cloudflare Pages headers.
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+
+# Make the crawler-facing files explicit and UTF-8.
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+/resume.json
+  Content-Type: application/json; charset=utf-8

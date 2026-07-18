@@ -1,0 +1,16 @@
+# build output
+dist/
+.astro/
+
+# deps
+node_modules/
+
+# env & logs
+.env
+.env.production
+npm-debug.log*
+*.log
+
+# os
+.DS_Store
+Thumbs.db
