@@ -71,8 +71,8 @@ export const projects: Project[] = [
       zh: '独立开发 — 架构设计、解析器框架、后端与仪表盘界面。',
     },
     result: {
-      en: 'Running in production for personal use. TODO: number of sources / data volume if I want to share it.',
-      zh: '已在生产环境中稳定运行，供个人日常使用。TODO: 如需展示可补充数据源数量 / 数据量。',
+      en: 'Running in production for personal use. ',
+      zh: '已在生产环境中稳定运行，供个人日常使用。',
     },
     stack: ['Python', 'FastAPI', 'ECharts', 'Plugin architecture'],
   },
