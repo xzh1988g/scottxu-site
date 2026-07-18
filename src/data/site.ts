@@ -23,7 +23,7 @@ export const site = {
   location: 'Singapore',
 
   // ── Contact (change the email here — one place) ─────────────────────────────
-  email: 'xu.zhihao@u.nus.edu',
+  email: 'hello@scottxu.dev',
 
   // ── External links ──────────────────────────────────────────────────────────
   linkedin: 'https://linkedin.com/in/scott-xu-b7a7046a',
