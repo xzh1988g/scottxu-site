@@ -54,45 +54,45 @@ export const ui = {
   },
   zh: {
     // Meta
-    'site.description': 'TODO(zh): 中文 meta description',
+    'site.description': '中文 meta description',
 
     // Language switch
     'lang.switch': 'English',
     'lang.switchAria': '切换到英文',
 
     // Hero
-    'hero.openToWork': 'TODO(zh): 开放机会',
+    'hero.openToWork': '开放新机会',
     'hero.location': '新加坡',
-    'hero.ctaContact': 'TODO(zh): 联系我',
-    'hero.ctaResume': 'TODO(zh): 下载简历',
-    'hero.photoAlt': 'TODO(zh): Scott Xu 肖像',
+    'hero.ctaContact': '联系我',
+    'hero.ctaResume': '下载简历',
+    'hero.photoAlt': 'Scott Xu 肖像',
 
     // Sections
-    'products.title': 'TODO(zh): 我做的产品',
-    'products.subtitle': 'TODO(zh): 副标题',
-    'products.viewCase': 'TODO(zh): 查看案例',
-    'products.liveLink': 'TODO(zh): 访问',
-    'experience.title': 'TODO(zh): 工作经历',
-    'skills.title': 'TODO(zh): 技能',
-    'skills.banking': 'TODO(zh): 银行领域',
-    'skills.technical': 'TODO(zh): 技术',
-    'skills.product': 'TODO(zh): 产品 / 项目管理',
-    'beyond.title': 'TODO(zh): 工作之外',
+    'products.title': '我做的产品',
+    'products.subtitle': '已上线、在运行、有人真的在用。',
+    'products.viewCase': '查看案例',
+    'products.liveLink': '访问',
+    'experience.title': '工作经历',
+    'skills.title': '技能',
+    'skills.banking': '银行业务领域',
+    'skills.technical': '技术能力',
+    'skills.product': '产品 / 项目管理',
+    'beyond.title': '工作之外',
 
     // Footer
-    'footer.emailLabel': 'TODO(zh): 邮箱',
+    'footer.emailLabel': '邮箱',
     'footer.linkedinLabel': 'LinkedIn',
-    'footer.resumeLabel': 'TODO(zh): 简历 (PDF)',
-    'footer.builtWith': 'TODO(zh): 使用 Astro 构建。无追踪，无 cookie。',
+    'footer.resumeLabel': '简历 (PDF)',
+    'footer.builtWith': '使用 Astro 构建。无追踪，无 cookie。',
 
     // Project subpage
-    'project.back': 'TODO(zh): ← 返回首页',
-    'project.problem': 'TODO(zh): 问题',
-    'project.approach': 'TODO(zh): 方法',
-    'project.role': 'TODO(zh): 我的角色',
-    'project.result': 'TODO(zh): 成果',
-    'project.stack': 'TODO(zh): 技术栈',
-    'project.visit': 'TODO(zh): 访问',
+    'project.back': '← 返回首页',
+    'project.problem': '问题',
+    'project.approach': '解决方案',
+    'project.role': '我的角色',
+    'project.result': '成果',
+    'project.stack': '技术栈',
+    'project.visit': '访问',
   },
 } as const;
 

@@ -8,10 +8,16 @@
  */
 
 :root {
-  --font-serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Georgia', 'Songti SC',
-    'Noto Serif CJK SC', serif;
+  /* Latin glyphs use the serif faces; CJK glyphs fall through to the first
+     installed Chinese face. Preference: an elegant Han serif where available
+     (macOS / anyone with Source Han / Noto Serif), otherwise a clean Han sans
+     (PingFang on macOS, Microsoft YaHei on Windows) — never generic SimSun. */
+  --font-serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia,
+    'Source Han Serif SC', 'Noto Serif SC', 'Songti SC', 'PingFang SC',
+    'Microsoft YaHei', '微软雅黑', serif;
   --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
-    'PingFang SC', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif;
+    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑',
+    'Source Han Sans SC', 'Noto Sans CJK SC', sans-serif;
   --font-mono: ui-monospace, 'SFMono-Regular', 'Cascadia Code', Menlo, Consolas, monospace;
 
   --ink: #1a1a1a;
@@ -223,12 +229,13 @@ ul {
 
 .tag {
   font-size: 0.78rem;
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
+  letter-spacing: 0.01em;
   color: var(--ink-faint);
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
 }
 
 /* ── Cards ───────────────────────────────────────────────────────────────── */

@@ -1,5 +1,6 @@
 ---
 import { site, type Lang } from '../data/site';
+import type { Bilingual } from '../data/types';
 import { useTranslations } from '../i18n/ui';
 
 interface Props {
@@ -7,6 +8,18 @@ interface Props {
 }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+
+// ── Hero tagline ────────────────────────────────────────────────────────────
+// One strong positioning line + one supporting line, per language.
+// Edit the text here; the ZH page uses the `zh` values.
+const tagline: Bilingual = {
+  en: 'I ship products, not slide decks.',
+  zh: '我交付的不是方案，是产品。',
+};
+const taglineSub: Bilingual = {
+  en: 'Product Manager at UBS building agentic workflows for client onboarding. Also: a bilingual AI game on the App Store, built solo.',
+  zh: '瑞银产品经理，负责客户开户的 AI 工作流平台。业余独立开发了一款双语 AI 游戏，已上架 App Store。',
+};
 ---
 
 <section class="section hero" aria-labelledby="hero-name">
@@ -23,15 +36,8 @@ const t = useTranslations(lang);
 
       <h1 id="hero-name">{site.name}</h1>
 
-      <!--
-        TODO: hero tagline
-        Supply one strong positioning line + one supporting line.
-        Replace the two <p> blocks below. Keep the first bold/large, second muted.
-      -->
-      <p class="tagline">I ship products, not slide decks.</p>
-      <p class="tagline-sub">
-        Product Manager at UBS building agentic workflows for client onboarding. Also: a bilingual AI game on the App Store, built solo.
-      </p>
+      <p class="tagline">{tagline[lang]}</p>
+      <p class="tagline-sub">{taglineSub[lang]}</p>
 
       <p class="hero-meta">
         <span aria-hidden="true">📍</span> {t('hero.location')}

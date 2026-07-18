@@ -43,5 +43,5 @@ export const skills: SkillColumn[] = [
 /** One memorable human detail. */
 export const beyondWork: Bilingual = {
   en: 'Certified Dive Instructor (100+ students trained) · Bouldering (SNCS Level 1) · Travelled 20+ countries.',
-  zh: 'TODO(zh): 持证潜水教练（培训 100+ 名学员）· 攀岩（SNCS 一级）· 走过 20+ 个国家。',
+  zh: '持证潜水教练（培训 100+ 名学员）· 攀岩（SNCS 一级）· 走过 20+ 个国家。',
 };

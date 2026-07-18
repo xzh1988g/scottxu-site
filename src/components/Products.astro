@@ -19,13 +19,11 @@ const t = useTranslations(lang);
     {
       projects.map((p) => (
         <article class="card product-card">
-          <div class="product-head">
-            <h3>{p.name[lang]}</h3>
-            <span class="pill pill-live">
-              <span class="dot" />
-              {p.status[lang]}
-            </span>
-          </div>
+          <span class="pill pill-live product-status">
+            <span class="dot" />
+            {p.status[lang]}
+          </span>
+          <h3 class="product-name">{p.name[lang]}</h3>
           <p class="product-oneliner">{p.oneLiner[lang]}</p>
 
           <ul class="stack-row">
@@ -55,12 +53,15 @@ const t = useTranslations(lang);
     display: grid;
     gap: 1.25rem;
   }
-  .product-head {
+  .product-card {
     display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 0.5rem;
+    flex-direction: column;
+  }
+  .product-status {
+    align-self: flex-start; /* pill hugs its text, sits top-left */
+    margin-bottom: 0.9rem;
+  }
+  .product-name {
     margin-bottom: 0.5rem;
   }
   .product-oneliner {
@@ -73,9 +74,16 @@ const t = useTranslations(lang);
     margin: 0 0 1.25rem;
   }
   .product-links {
+    margin-top: auto; /* pin buttons to card bottom so both cards' rows align */
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column; /* 查看案例 on top, 访问 (or future buttons) below */
     gap: 0.6rem;
+  }
+  /* Every button is full-width, so they're the same size within and across cards.
+     A card with no live link simply shows 查看案例 alone. */
+  .product-links .btn {
+    width: 100%;
+    justify-content: center;
   }
 
   @media (min-width: 40rem) {
