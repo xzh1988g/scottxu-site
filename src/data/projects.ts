@@ -76,6 +76,34 @@ export const projects: Project[] = [
     },
     stack: ['Python', 'FastAPI', 'ECharts', 'Plugin architecture'],
   },
+  {
+    slug: 'magic-remover',
+    name: { en: 'MagicRemover', zh: 'MagicRemover 去背器' },
+    oneLiner: {
+      en: 'A desktop background remover that trades one-click AI for precise, offline control.',
+      zh: '桌面去背工具：放弃一键 AI，换来精确、离线、可反悔的控制权。',
+    },
+    liveUrl: 'https://github.com/xzh1988g/Background_Removal',
+    liveLabel: 'GitHub',
+    status: { en: 'Open source on GitHub', zh: '已在 GitHub 开源' },
+    problem: {
+      en: 'One-click AI background removers are a black box: when they clip an edge wrong there is no way to correct just that part, and they require uploading the image to someone else\'s server. For images with flat backgrounds — logos, product shots, screenshots — what is actually needed is precise, repeatable control that runs locally.',
+      zh: '一键式 AI 去背工具是个黑盒：边缘抠错了也没法只修那一处，而且必须把图片上传到别人的服务器。但对于纯色背景的图片——logo、商品图、截图——真正需要的其实是精确、可复现、且完全在本地运行的控制。',
+    },
+    approach: {
+      en: 'A desktop tool built on classic computer vision instead of a model: click a color, flood-fill selects the contiguous region within an adjustable tolerance, and the result is written to the alpha channel. Each pick is a non-destructive layer in a history panel — adjust its tolerance or delete it individually at any time. The original and the checkerboard transparency preview share one synced zoom/pan view, and export offers resizing with aspect-ratio lock.',
+      zh: '不用模型，而是用传统计算机视觉搭的桌面工具：点选一个颜色，漫水填充按可调容差选出相连区域，结果写入 alpha 通道。每次取色都是历史面板里的一层非破坏性操作——随时可以单独调整它的容差或删掉。原图与棋盘格透明预览共享同一套缩放/平移视图，导出时还可按锁定长宽比缩放。',
+    },
+    role: {
+      en: 'Sole builder — product design, image-processing logic, desktop UI, and bilingual interface.',
+      zh: '独立开发 — 产品设计、图像处理逻辑、桌面界面与双语界面。',
+    },
+    result: {
+      en: 'A working tool I use myself, open-sourced on GitHub.',
+      zh: '自己在日常使用的工具，已在 GitHub 开源。',
+    },
+    stack: ['Python', 'OpenCV', 'Tkinter', 'Bilingual (EN/中文)'],
+  },
 ];
 
 export function getProject(slug: string): Project | undefined {

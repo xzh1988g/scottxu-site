@@ -6,7 +6,7 @@
     "image": "https://scottxu.dev/scott.jpg",
     "email": "hello@scottxu.dev",
     "url": "https://scottxu.dev",
-    "summary": "Singapore-based Product Manager with 15+ years in banking and financial-services transformation, now leading AI-powered client onboarding at a global bank as journey lead for a Flowable-based agentic workflow platform. Ships his own products: Turtle Soup (a bilingual AI puzzle game on the iOS App Store) and MyHub (a personal data platform). NUS MBA, Tongji University B.Sc. Computer Science, PMP certified. Open to AI/Product opportunities.",
+    "summary": "Singapore-based Product Manager with 15+ years in banking and financial-services transformation, now leading AI-powered client onboarding at a global bank as journey lead for a Flowable-based agentic workflow platform. Ships his own products: Turtle Soup (a bilingual AI puzzle game on the iOS App Store), MyHub (a personal data platform), and MagicRemover (an open-source offline background-removal tool). NUS MBA, Tongji University B.Sc. Computer Science, PMP certified. Open to AI/Product opportunities.",
     "location": {
       "city": "Singapore",
       "countryCode": "SG"
@@ -139,6 +139,13 @@
       "name": "MyHub",
       "description": "Personal data platform: plugin-based parsers feeding interactive dashboards. In production for personal use.",
       "keywords": ["Python", "FastAPI", "ECharts", "Plugin architecture"],
+      "roles": ["Sole builder"]
+    },
+    {
+      "name": "MagicRemover",
+      "description": "Offline desktop background-removal tool: flood-fill colour keying with adjustable tolerance and a non-destructive, editable history of picks. Open source.",
+      "url": "https://github.com/xzh1988g/Background_Removal",
+      "keywords": ["Python", "OpenCV", "Tkinter", "Bilingual"],
       "roles": ["Sole builder"]
     }
   ],

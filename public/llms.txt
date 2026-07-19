@@ -4,7 +4,8 @@ Scott Xu (Zhihao Xu) is a Singapore-based Product Manager with 15+ years in
 banking & financial-services transformation, now leading AI-powered client
 onboarding at a global bank — journey lead for a Flowable-based agentic
 workflow platform. He builds his own products: Turtle Soup, a bilingual
-AI puzzle game live on the iOS App Store, and MyHub, a personal data platform.
+AI puzzle game live on the iOS App Store; MyHub, a personal data platform;
+and MagicRemover, an open-source offline background-removal desktop tool.
 NUS MBA, Tongji University B.Sc. Computer Science, PMP certified.
 Open to AI/Product opportunities.
 
@@ -15,3 +16,4 @@ Open to AI/Product opportunities.
 ## Products
 - Turtle Soup (海龟汤): https://apps.apple.com/app/id6767982859
 - MyHub: personal data platform (Python/FastAPI/ECharts)
+- MagicRemover: offline background-removal desktop tool (Python/OpenCV/Tkinter): https://github.com/xzh1988g/Background_Removal
